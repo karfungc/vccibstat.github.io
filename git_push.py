@@ -1,23 +1,17 @@
-import subprocess
+import git
 
-def git_push(commit_message):
-    try:
-        # Add all changes
-        subprocess.run(['git', 'add', '.'], check=True)
-        print("Added changes to staging.")
+# Path to your local repository
+repo_path = "./"
 
-        # Commit changes
-        subprocess.run(['git', 'commit', '-m', commit_message], check=True)
-        print(f"Committed changes: {commit_message}")
+# Initialize a Git repository object
+repo = git.Repo(repo_path)
 
-        # Push changes
-        subprocess.run(['git', 'push'], check=True)
-        print("Pushed changes to remote repository.")
+# Add all changes to the staging area
+repo.git.add(all=True)
 
-    except subprocess.CalledProcessError as e:
-        print(f"An error occurred: {e}")
-        exit(1)
+# Commit the changes
+repo.index.commit("Commit message")
 
-if __name__ == "__main__":
-    commit_message = "Updated"
-    git_push(commit_message)
+# Push the changes to the remote repository
+origin = repo.remote("origin")
+origin.push()
