@@ -1,0 +1,291 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=0.5">
+        <title> Welcome to Cricket League
+        </title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+
+        <style>
+        .side-by-side-images img {
+            display: inline-block;
+            width: 50%; /* Slightly less than 50% to accommodate margins/padding */
+            vertical-align: top; /* Align images at the top */
+            margin-right: 2%; /* Space between images, adjust as needed */
+        }
+    
+        table {
+          border-collapse: collapse;
+          margin: 0 auto; /* Center alignment */
+          font-family: Arial, sans-serif;
+          width: 100%;
+        }
+
+        table.centered {
+          width: 400px; /* Fixed width */
+          margin: 0 auto; /* Center alignment */
+          border-collapse: collapse;
+          font-family: Arial, sans-serif;
+        }    
+
+        th, td {
+          border: 1px solid black;
+          padding: 8px;
+          text-align: center;
+        }
+    
+        th {
+          background-color: #FFA500;
+          color: black;
+        }
+    
+        .light-orange {
+          background-color: #FFFF99;
+        }
+    
+        .highlight-color {
+          background-color: #87CEEB;
+        }
+
+        .points-table {
+          background-color: #E0FFFF;
+        }
+        body {
+          padding: 0;
+          margin: 0;
+          border: 0;
+          font-family: "Museo Sans", sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+        ul.accordion-list {
+          position: relative;
+          display: block;
+          width: 100%;
+          height: auto;
+          padding: 20px;
+          margin: 0;
+          list-style: none;
+          background-color: #f9f9fa;
+        }
+        ul.accordion-list li {
+          position: relative;
+          display: block;
+          width: 100%;
+          height: auto;
+          background-color: #fff;
+          padding: 20px;
+          margin: 0 auto 15px auto;
+          border: 1px solid #eee;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        ul.accordion-list .main-accordion--list.active:after {
+          transform: rotate(180deg);
+        }
+        ul.accordion-list li h2 {
+          font-weight: 600;
+          position: relative;
+          display: block;
+          width: 100%;
+          height: auto;
+          padding: 0 0 0 0;
+          margin: 0;
+          font-size: 24px;
+          letter-spacing: 0.01em;
+          cursor: pointer;
+          font-family: Arial, sans-serif;
+        }
+        ul.accordion-list .main-accordion--list:after {
+          content: "2fc";
+          font-family: "material-design-iconic-font";
+          position: absolute;
+          right: 20px;
+          top: 20px;
+          color: #000;
+          transition: all 0.3s ease-in-out;
+          font-size: 34px;
+        }
+        ul.accordion-list li div.answer {
+          position: relative;
+          display: block;
+          width: 100%;
+          height: auto;
+          margin: 0;
+          padding: 0;
+          cursor: pointer;
+        }
+        ul.accordion-list li div.answer p {
+          position: relative;
+          display: block;
+          font-weight: 300;
+          padding: 10px 0 0 0;
+          cursor: pointer;
+          line-height: 150%;
+          margin: 0 0 15px 0;
+          font-size: 14px;
+        }
+        .main-header-block h1 {
+          text-align: center;
+        }
+        .accordion-inner-block {
+          margin-top: 20px;
+        }
+        .accortion-list--inner, .accortion-list-odi--inner {
+          display: flex;
+          align-items: center;
+          padding-left: 10px;
+          margin-bottom: 4px;
+          box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+        }
+        .accordion-inner-block .accortion-list--inner li,
+        .accordion-inner-odi-block .accortion-list-odi--inner li {
+          border: none;
+          margin-bottom: 0;
+          font-size: 18px;
+        }
+        .accordion-inner-block .accortion-list--inner li strong {
+          font-weight: 600;
+        }
+        .accordion-inner-block .accortion-list--inner li strong svg,
+        .odi-player-status--inner li strong svg {
+          vertical-align: bottom;
+          width: 25px;
+          height: auto;
+          padding-right: 5px;
+        }
+        .accordion-inner-block .accortion-list--inner li:first-child,
+        .accordion-inner-odi-block .accortion-list-odi--inner li:first-child {
+          min-width: 28%;
+          width: auto;
+          padding-left: 0;
+        }
+        .accordion-inner-block .accortion-list--inner li:nth-child(2) span,
+        .accordion-inner-odi-block .accortion-list-odi--inner li:nth-child(2) .green-status {
+          background: #e5f6ee;
+          padding: 8px;
+          border-radius: 6px;
+          color: #05ad61;
+        }
+        .accordion-inner-block .accortion-list--inner li:nth-child(3) span,
+        .odi-player-status--inner li:nth-child(2) span {
+          background: #fff8e5;
+          padding: 8px;
+          border-radius: 6px;
+          color: #fbb000;
+        }
+        .accordion-inner-block .accortion-list--inner li:last-child span,
+        .odi-player-status--inner li:nth-child(3) span {
+          background: #f7f7f7;
+          padding: 8px;
+          border-radius: 6px;
+          color: #999999;
+        }
+        .accordion-inner-block .accortion-list--inner.data-two li:nth-child(2) span,
+        .odi-player-status--inner li:nth-child(4) span,
+        .accortion-list-odi--inner li:nth-child(2) .red-status {
+          background: #fef4f3;
+          padding: 8px;
+          border-radius: 6px;
+          color: #e1453d;
+        }
+        .odi-player-status ul {
+          padding-left: 0;
+        }
+        .odi-player-status ul h4 {
+          margin: 0;
+          padding: 10px 0px;
+          font-size: 20px;
+        }  
+        .odi-player-status ul li {
+          padding: 20px 0px;
+        }
+        .accordion--header {
+          display: flex;
+          align-items: center;
+          padding-right: 40px;
+        }
+        .accordion--header .number-of-record {
+          background: #dbdbff;
+          padding: 6px 12px;
+          color: #0000ee;
+          font-size: 20px;
+          font-weight: 600;
+          border-radius: 4px;
+        }
+
+        </style>
+    
+    
+    
+        <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+    
+    </head>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKHN27QRB"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-GEKHN27QRB');
+    </script>
+    <script>
+      $(document).ready(function(){
+        $('.accordion-list > li > .answer').hide();
+          
+        $('.accordion-list > li').click(function() {
+          if ($(this).hasClass("active")) {
+            $(this).removeClass("active").find(".answer").slideUp();
+          } else {
+            $(".accordion-list > li.active .answer").slideUp();
+            $(".accordion-list > li.active").removeClass("active");
+            $(this).addClass("active").find(".answer").slideDown();
+          }
+          return false;
+        });
+
+      });
+    </script>
+
+    <body>
+    
+
+     <img src="./../images/header_web_page_1.png" alt="" class="profile-pic" style="width:100%;height:25%;">
+    
+    <bt><br>    
+    <br>
+    
+    
+    
+        <div style="text-align:center;">
+            <h3><a href="./../index.html">Back to Home</a></h3>
+        </div>
+
+
+        <div style="text-align:center;">
+            <h1>Vcc Season 1</h1>
+        </div>
+        
+    
+                
+    </body>
+
+<footer>
+    <p>
+
+        These games are played between a bunch of passionate cricketers on virtual cricket, and these matches are played for pleasure. 
+
+    </p>
+</footer>
+
+    </html>
+        
