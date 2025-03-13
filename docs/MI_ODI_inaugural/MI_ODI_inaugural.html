@@ -1,0 +1,1354 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=0.5">
+        <title> Welcome to Cricket League
+        </title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+
+        <style>
+        .side-by-side-images img {
+            display: inline-block;
+            width: 50%; /* Slightly less than 50% to accommodate margins/padding */
+            vertical-align: top; /* Align images at the top */
+            margin-right: 2%; /* Space between images, adjust as needed */
+        }
+    
+        table {
+          border-collapse: collapse;
+          margin: 0 auto; /* Center alignment */
+          font-family: Arial, sans-serif;
+          width: 100%;
+        }
+
+        table.centered {
+          width: 400px; /* Fixed width */
+          margin: 0 auto; /* Center alignment */
+          border-collapse: collapse;
+          font-family: Arial, sans-serif;
+        }    
+
+        th, td {
+          border: 1px solid black;
+          padding: 8px;
+          text-align: center;
+        }
+    
+        th {
+          background-color: #FFA500;
+          color: black;
+        }
+    
+        .light-orange {
+          background-color: #FFFF99;
+        }
+    
+        .highlight-color {
+          background-color: #87CEEB;
+        }
+
+        .points-table {
+          background-color: #E0FFFF;
+        }
+        body {
+          padding: 0;
+          margin: 0;
+          border: 0;
+          font-family: "Museo Sans", sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+        ul.accordion-list {
+          position: relative;
+          display: block;
+          width: 100%;
+          height: auto;
+          padding: 20px;
+          margin: 0;
+          list-style: none;
+          background-color: #f9f9fa;
+        }
+        ul.accordion-list li {
+          position: relative;
+          display: block;
+          width: 100%;
+          height: auto;
+          background-color: #fff;
+          padding: 20px;
+          margin: 0 auto 15px auto;
+          border: 1px solid #eee;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        ul.accordion-list .main-accordion--list.active:after {
+          transform: rotate(180deg);
+        }
+        ul.accordion-list li h2 {
+          font-weight: 600;
+          position: relative;
+          display: block;
+          width: 100%;
+          height: auto;
+          padding: 0 0 0 0;
+          margin: 0;
+          font-size: 24px;
+          letter-spacing: 0.01em;
+          cursor: pointer;
+          font-family: Arial, sans-serif;
+        }
+        ul.accordion-list .main-accordion--list:after {
+          content: "2fc";
+          font-family: "material-design-iconic-font";
+          position: absolute;
+          right: 20px;
+          top: 20px;
+          color: #000;
+          transition: all 0.3s ease-in-out;
+          font-size: 34px;
+        }
+        ul.accordion-list li div.answer {
+          position: relative;
+          display: block;
+          width: 100%;
+          height: auto;
+          margin: 0;
+          padding: 0;
+          cursor: pointer;
+        }
+        ul.accordion-list li div.answer p {
+          position: relative;
+          display: block;
+          font-weight: 300;
+          padding: 10px 0 0 0;
+          cursor: pointer;
+          line-height: 150%;
+          margin: 0 0 15px 0;
+          font-size: 14px;
+        }
+        .main-header-block h1 {
+          text-align: center;
+        }
+        .accordion-inner-block {
+          margin-top: 20px;
+        }
+        .accortion-list--inner, .accortion-list-odi--inner {
+          display: flex;
+          align-items: center;
+          padding-left: 10px;
+          margin-bottom: 4px;
+          box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+        }
+        .accordion-inner-block .accortion-list--inner li,
+        .accordion-inner-odi-block .accortion-list-odi--inner li {
+          border: none;
+          margin-bottom: 0;
+          font-size: 18px;
+        }
+        .accordion-inner-block .accortion-list--inner li strong {
+          font-weight: 600;
+        }
+        .accordion-inner-block .accortion-list--inner li strong svg,
+        .odi-player-status--inner li strong svg {
+          vertical-align: bottom;
+          width: 25px;
+          height: auto;
+          padding-right: 5px;
+        }
+        .accordion-inner-block .accortion-list--inner li:first-child,
+        .accordion-inner-odi-block .accortion-list-odi--inner li:first-child {
+          min-width: 28%;
+          width: auto;
+          padding-left: 0;
+        }
+        .accordion-inner-block .accortion-list--inner li:nth-child(2) span,
+        .accordion-inner-odi-block .accortion-list-odi--inner li:nth-child(2) .green-status {
+          background: #e5f6ee;
+          padding: 8px;
+          border-radius: 6px;
+          color: #05ad61;
+        }
+        .accordion-inner-block .accortion-list--inner li:nth-child(3) span,
+        .odi-player-status--inner li:nth-child(2) span {
+          background: #fff8e5;
+          padding: 8px;
+          border-radius: 6px;
+          color: #fbb000;
+        }
+        .accordion-inner-block .accortion-list--inner li:last-child span,
+        .odi-player-status--inner li:nth-child(3) span {
+          background: #f7f7f7;
+          padding: 8px;
+          border-radius: 6px;
+          color: #999999;
+        }
+        .accordion-inner-block .accortion-list--inner.data-two li:nth-child(2) span,
+        .odi-player-status--inner li:nth-child(4) span,
+        .accortion-list-odi--inner li:nth-child(2) .red-status {
+          background: #fef4f3;
+          padding: 8px;
+          border-radius: 6px;
+          color: #e1453d;
+        }
+        .odi-player-status ul {
+          padding-left: 0;
+        }
+        .odi-player-status ul h4 {
+          margin: 0;
+          padding: 10px 0px;
+          font-size: 20px;
+        }  
+        .odi-player-status ul li {
+          padding: 20px 0px;
+        }
+        .accordion--header {
+          display: flex;
+          align-items: center;
+          padding-right: 40px;
+        }
+        .accordion--header .number-of-record {
+          background: #dbdbff;
+          padding: 6px 12px;
+          color: #0000ee;
+          font-size: 20px;
+          font-weight: 600;
+          border-radius: 4px;
+        }
+
+        </style>
+    
+    
+    
+        <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+    
+    </head>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKHN27QRB"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-GEKHN27QRB');
+    </script>
+    <script>
+      $(document).ready(function(){
+        $('.accordion-list > li > .answer').hide();
+          
+        $('.accordion-list > li').click(function() {
+          if ($(this).hasClass("active")) {
+            $(this).removeClass("active").find(".answer").slideUp();
+          } else {
+            $(".accordion-list > li.active .answer").slideUp();
+            $(".accordion-list > li.active").removeClass("active");
+            $(this).addClass("active").find(".answer").slideDown();
+          }
+          return false;
+        });
+
+      });
+    </script>
+
+    <body>
+    
+
+     <img src="./../images/header_web_page_1.png" alt="" class="profile-pic" style="width:100%;height:25%;">
+    
+    <bt><br>    
+    <br>
+    
+    
+    
+        <div style="text-align:center;">
+            <h3><a href="./../index.html">Back to Home</a></h3>
+        </div>
+
+
+        <div style="text-align:center;">
+            <h1>Mi Odi Inaugural</h1>
+        </div>
+        
+            <div style="text-align:center;">
+                <h2>Group B</h2>
+            </div>
+            <table class="sortable">
+<thead>
+<tr>
+<th>Place</th>
+<th>Player Name</th>
+<th>Matches</th>
+<th>Innings</th>
+<th>Wins</th>
+<th>Losses</th>
+<th>Draws</th>
+<th>Points</th>
+<th>Bonus Points</th>
+<th>Runs</th>
+<th>Wickets</th>
+<th>Overs</th>
+<th>Average</th>
+<th>Runs Opponent</th>
+<th>Overs Opponent</th>
+<th>Wickets Opponent</th>
+<th>Average Difference</th>
+<th>Run Rate</th>
+<th>Strike Rate</th>
+<th>Average Overs Per Innings</th>
+<th>Max Points Possible</th>
+<th>Extras</th>
+<th>Extras Opponent</th>
+<th>Level</th>
+<th>Col For Web</th>
+</tr>
+</thead>
+<tbody>
+<tr class="light-orange">
+<td>1</td>
+<td class="highlight-color"><b><a href = "karthikeya.html">karthikeya</a><b></td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td class="points-table">4</td>
+<td>0</td>
+<td>802</td>
+<td>15</td>
+<td>80.0</td>
+<td class="points-table">53.43104596935377</td>
+<td>772</td>
+<td>71.0</td>
+<td>20</td>
+<td>14.83</td>
+<td>10.02</td>
+<td>167.08</td>
+<td>53.33</td>
+<td>32</td>
+<td>6</td>
+<td>1</td>
+<td>B</td>
+<td>B_B</td>
+</tr>
+<tr class="light-orange">
+<td>2</td>
+<td class="highlight-color"><b><a href = "hiren.html">hiren</a><b></td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td class="points-table">0</td>
+<td>0</td>
+<td>772</td>
+<td>20</td>
+<td>71.0</td>
+<td class="points-table">38.58070964517741</td>
+<td>802</td>
+<td>80.0</td>
+<td>15</td>
+<td>-14.89</td>
+<td>10.87</td>
+<td>181.22</td>
+<td>35.5</td>
+<td>28</td>
+<td>1</td>
+<td>6</td>
+<td>B</td>
+<td>B_B</td>
+</tr>
+<tr class="">
+<td>3</td>
+<td class="highlight-color"><b><a href = "aj.html">aj</a><b></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="points-table">0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+<td class="points-table">0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>32</td>
+<td>0</td>
+<td>0</td>
+<td>B</td>
+<td>B_B</td>
+</tr>
+<tr class="">
+<td>4</td>
+<td class="highlight-color"><b><a href = "ypavank.html">ypavank</a><b></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="points-table">0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+<td class="points-table">0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>32</td>
+<td>0</td>
+<td>0</td>
+<td>B</td>
+<td>B_B</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
+            <div style="text-align:center;">
+                <h2>Group A</h2>
+            </div>
+            <table class="sortable">
+<thead>
+<tr>
+<th>Place</th>
+<th>Player Name</th>
+<th>Matches</th>
+<th>Innings</th>
+<th>Wins</th>
+<th>Losses</th>
+<th>Draws</th>
+<th>Points</th>
+<th>Bonus Points</th>
+<th>Runs</th>
+<th>Wickets</th>
+<th>Overs</th>
+<th>Average</th>
+<th>Runs Opponent</th>
+<th>Overs Opponent</th>
+<th>Wickets Opponent</th>
+<th>Average Difference</th>
+<th>Run Rate</th>
+<th>Strike Rate</th>
+<th>Average Overs Per Innings</th>
+<th>Max Points Possible</th>
+<th>Extras</th>
+<th>Extras Opponent</th>
+<th>Level</th>
+<th>Col For Web</th>
+</tr>
+</thead>
+<tbody>
+<tr class="light-orange">
+<td>1</td>
+<td class="highlight-color"><b><a href = "aman.html">aman</a><b></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="points-table">0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+<td class="points-table">0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>32</td>
+<td>0</td>
+<td>0</td>
+<td>A</td>
+<td>A_A</td>
+</tr>
+<tr class="light-orange">
+<td>2</td>
+<td class="highlight-color"><b><a href = "lelouch.html">lelouch</a><b></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="points-table">0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+<td class="points-table">0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>32</td>
+<td>0</td>
+<td>0</td>
+<td>A</td>
+<td>A_A</td>
+</tr>
+<tr class="">
+<td>3</td>
+<td class="highlight-color"><b><a href = "sandeepvr.html">sandeepvr</a><b></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="points-table">0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+<td class="points-table">0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>32</td>
+<td>0</td>
+<td>0</td>
+<td>A</td>
+<td>A_A</td>
+</tr>
+<tr class="">
+<td>4</td>
+<td class="highlight-color"><b><a href = "karthik.html">karthik</a><b></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="points-table">0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+<td class="points-table">0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>32</td>
+<td>0</td>
+<td>0</td>
+<td>A</td>
+<td>A_A</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
+            <div style="text-align:center;">
+                <h1>Overall Points Table</h1>
+            </div>
+            <table class="sortable">
+<thead>
+<tr>
+<th>Place</th>
+<th>Player Name</th>
+<th>Matches</th>
+<th>Innings</th>
+<th>Wins</th>
+<th>Losses</th>
+<th>Draws</th>
+<th>Points</th>
+<th>Bonus Points</th>
+<th>Runs</th>
+<th>Wickets</th>
+<th>Overs</th>
+<th>Average</th>
+<th>Runs Opponent</th>
+<th>Overs Opponent</th>
+<th>Wickets Opponent</th>
+<th>Average Difference</th>
+<th>Run Rate</th>
+<th>Strike Rate</th>
+<th>Average Overs Per Innings</th>
+<th>Max Points Possible</th>
+<th>Extras</th>
+<th>Extras Opponent</th>
+<th>Level</th>
+<th>Col For Web</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td class="highlight-color"><b><a href = "karthikeya.html">karthikeya</a><b></td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td class="points-table">4</td>
+<td>0</td>
+<td>802</td>
+<td>15</td>
+<td>80.0</td>
+<td class="points-table">53.43104596935377</td>
+<td>772</td>
+<td>71.0</td>
+<td>20</td>
+<td>14.83</td>
+<td>10.02</td>
+<td>167.08</td>
+<td>53.33</td>
+<td>32</td>
+<td>6</td>
+<td>1</td>
+<td>B</td>
+<td>B_B</td>
+</tr>
+<tr>
+<td>2</td>
+<td class="highlight-color"><b><a href = "hiren.html">hiren</a><b></td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td class="points-table">0</td>
+<td>0</td>
+<td>772</td>
+<td>20</td>
+<td>71.0</td>
+<td class="points-table">38.58070964517741</td>
+<td>802</td>
+<td>80.0</td>
+<td>15</td>
+<td>-14.89</td>
+<td>10.87</td>
+<td>181.22</td>
+<td>35.5</td>
+<td>28</td>
+<td>1</td>
+<td>6</td>
+<td>B</td>
+<td>B_B</td>
+</tr>
+<tr>
+<td>3</td>
+<td class="highlight-color"><b><a href = "aman.html">aman</a><b></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="points-table">0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+<td class="points-table">0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>32</td>
+<td>0</td>
+<td>0</td>
+<td>A</td>
+<td>A_A</td>
+</tr>
+<tr>
+<td>4</td>
+<td class="highlight-color"><b><a href = "aj.html">aj</a><b></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="points-table">0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+<td class="points-table">0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>32</td>
+<td>0</td>
+<td>0</td>
+<td>B</td>
+<td>B_B</td>
+</tr>
+<tr>
+<td>5</td>
+<td class="highlight-color"><b><a href = "lelouch.html">lelouch</a><b></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="points-table">0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+<td class="points-table">0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>32</td>
+<td>0</td>
+<td>0</td>
+<td>A</td>
+<td>A_A</td>
+</tr>
+<tr>
+<td>6</td>
+<td class="highlight-color"><b><a href = "sandeepvr.html">sandeepvr</a><b></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="points-table">0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+<td class="points-table">0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>32</td>
+<td>0</td>
+<td>0</td>
+<td>A</td>
+<td>A_A</td>
+</tr>
+<tr>
+<td>7</td>
+<td class="highlight-color"><b><a href = "ypavank.html">ypavank</a><b></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="points-table">0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+<td class="points-table">0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>32</td>
+<td>0</td>
+<td>0</td>
+<td>B</td>
+<td>B_B</td>
+</tr>
+<tr>
+<td>8</td>
+<td class="highlight-color"><b><a href = "karthik.html">karthik</a><b></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td class="points-table">0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+<td class="points-table">0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>32</td>
+<td>0</td>
+<td>0</td>
+<td>A</td>
+<td>A_A</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html><br><br>
+            <div style="text-align:center;">
+                <h1>Individual Player Stats</h1>
+            </div>
+            <table class="sortable">
+<thead>
+<tr>
+<th>place</th>
+<th>name</th>
+<th>total_runs</th>
+<th>wickets</th>
+<th>overs</th>
+<th>average</th>
+<th>strike_rate</th>
+<th>ducks</th>
+<th>50s</th>
+<th>100s</th>
+<th>200s</th>
+<th>300s</th>
+<th>400s</th>
+<th>500s</th>
+<th>highest_total_score</th>
+<th>highest_batsman_score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td class="highlight-color"><b><a href = "karthikeya.html">Karthikeya</a><b></td>
+<td class="points-table">802</td>
+<td>15</td>
+<td>78</td>
+<td class="points-table">53.47</td>
+<td>171.37</td>
+<td>1</td>
+<td>5</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>470</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td class="highlight-color"><b><a href = "hiren.html">Hiren</a><b></td>
+<td class="points-table">772</td>
+<td>20</td>
+<td>70</td>
+<td class="points-table">38.6</td>
+<td>183.81</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>537</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html><br><br>
+
+        <div style="text-align:center;">
+            <h1>Series Summary</h1>
+        </div>
+
+        <table class="centered">
+          <tr>
+            <th>Column Name</th>
+            <th>Value</th>
+          </tr>
+        <tr><td>Matches</td><td>1</td></tr>
+<tr><td>Innings</td><td>4</td></tr>
+<tr><td>Draws</td><td>0</td></tr>
+<tr><td>Runs</td><td>1574</td></tr>
+<tr><td>Wickets</td><td>35</td></tr>
+<tr><td>Overs</td><td>151</td></tr>
+<tr><td>Balls</td><td>906.0</td></tr>
+<tr><td>Average</td><td>44.97</td></tr>
+<tr><td>Run Rate</td><td>10.42</td></tr>
+<tr><td>Strike Rate</td><td>173.73</td></tr>
+<tr><td>Average Runs Per Match</td><td>1574.0</td></tr>
+<tr><td>Average Runs Per Innings</td><td>393.5</td></tr>
+<tr><td>Average Overs Per Match</td><td>172.57</td></tr>
+<tr><td>Average Overs Per Wicket</td><td>4.31</td></tr>
+<tr><td>Average Overs Per Innings</td><td>43.14</td></tr>
+<tr><td>Average Balls Per Match</td><td>453.0</td></tr>
+<tr><td>Average Balls Per Innings</td><td>226.5</td></tr>
+<tr><td>Average Balls Per Wicket</td><td>25.89</td></tr>
+<tr><td>Nrr</td><td>0.0</td></tr>
+<tr><td>0</td><td>288</td></tr>
+<tr><td>1</td><td>201</td></tr>
+<tr><td>2</td><td>160</td></tr>
+<tr><td>3</td><td>28</td></tr>
+<tr><td>4</td><td>188</td></tr>
+<tr><td>6</td><td>35</td></tr>
+<tr><td>Extras</td><td>7.0</td></tr>
+<tr><td>Runs In Boundaries</td><td>962.0</td></tr>
+
+        </table>
+        <br><br>
+
+         <div style="text-align:center;">
+             <h1>Other Stats</h1>
+         </div>
+         <table class="sortable">
+<thead>
+<tr>
+<th>Highest_runs</th>
+<th>Runs</th>
+<th>Highest_average</th>
+<th>Average</th>
+<th>Highest_0</th>
+<th>0</th>
+<th>Highest_1</th>
+<th>1</th>
+<th>Highest_2</th>
+<th>2</th>
+<th>Highest_3</th>
+<th>3</th>
+<th>Highest_4</th>
+<th>4</th>
+<th>Highest_6</th>
+<th>6</th>
+<th>Highest_overs</th>
+<th>Overs</th>
+<th>Highest_run_rate</th>
+<th>Run_rate</th>
+<th>Highest_average_overs_per_innings</th>
+<th>Average_overs_per_innings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="light-orange">
+<td class="highlight-color"><b><a href = "karthikeya.html">karthikeya</a><b></td>
+<td>802</td>
+<td class="highlight-color"><b><a href = "karthikeya.html">karthikeya</a><b></td>
+<td>53.43104596935377</td>
+<td class="highlight-color"><b><a href = "karthikeya.html">karthikeya</a><b></td>
+<td>174</td>
+<td class="highlight-color"><b><a href = "karthikeya.html">karthikeya</a><b></td>
+<td>115</td>
+<td class="highlight-color"><b><a href = "hiren.html">hiren</a><b></td>
+<td>99.0</td>
+<td class="highlight-color"><b><a href = "hiren.html">hiren</a><b></td>
+<td>15.0</td>
+<td class="highlight-color"><b><a href = "hiren.html">hiren</a><b></td>
+<td>103.0</td>
+<td class="highlight-color"><b><a href = "karthikeya.html">karthikeya</a><b></td>
+<td>30.0</td>
+<td class="highlight-color"><b><a href = "karthikeya.html">karthikeya</a><b></td>
+<td>80.0</td>
+<td class="highlight-color"><b><a href = "hiren.html">hiren</a><b></td>
+<td>10.87</td>
+<td class="highlight-color"><b><a href = "karthikeya.html">karthikeya</a><b></td>
+<td>53.33</td>
+</tr>
+<tr class="light-orange">
+<td class="highlight-color"><b><a href = "hiren.html">hiren</a><b></td>
+<td>772</td>
+<td class="highlight-color"><b><a href = "hiren.html">hiren</a><b></td>
+<td>38.58070964517741</td>
+<td class="highlight-color"><b><a href = "hiren.html">hiren</a><b></td>
+<td>114</td>
+<td class="highlight-color"><b><a href = "hiren.html">hiren</a><b></td>
+<td>86</td>
+<td class="highlight-color"><b><a href = "karthikeya.html">karthikeya</a><b></td>
+<td>61.0</td>
+<td class="highlight-color"><b><a href = "karthikeya.html">karthikeya</a><b></td>
+<td>13.0</td>
+<td class="highlight-color"><b><a href = "karthikeya.html">karthikeya</a><b></td>
+<td>85.0</td>
+<td class="highlight-color"><b><a href = "hiren.html">hiren</a><b></td>
+<td>5.0</td>
+<td class="highlight-color"><b><a href = "hiren.html">hiren</a><b></td>
+<td>71.0</td>
+<td class="highlight-color"><b><a href = "karthikeya.html">karthikeya</a><b></td>
+<td>10.02</td>
+<td class="highlight-color"><b><a href = "hiren.html">hiren</a><b></td>
+<td>35.5</td>
+</tr>
+<tr class="light-orange">
+<td class="highlight-color"><b><a href = "aman.html">aman</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "aman.html">aman</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "aman.html">aman</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "aman.html">aman</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "aman.html">aman</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "aman.html">aman</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "aman.html">aman</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "aman.html">aman</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "aman.html">aman</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "aman.html">aman</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "aman.html">aman</a><b></td>
+<td>0.0</td>
+</tr>
+<tr class="light-orange">
+<td class="highlight-color"><b><a href = "aj.html">aj</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "aj.html">aj</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "aj.html">aj</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "aj.html">aj</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "aj.html">aj</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "aj.html">aj</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "aj.html">aj</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "aj.html">aj</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "aj.html">aj</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "aj.html">aj</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "aj.html">aj</a><b></td>
+<td>0.0</td>
+</tr>
+<tr class="light-orange">
+<td class="highlight-color"><b><a href = "lelouch.html">lelouch</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "lelouch.html">lelouch</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "lelouch.html">lelouch</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "lelouch.html">lelouch</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "lelouch.html">lelouch</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "lelouch.html">lelouch</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "lelouch.html">lelouch</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "lelouch.html">lelouch</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "lelouch.html">lelouch</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "lelouch.html">lelouch</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "lelouch.html">lelouch</a><b></td>
+<td>0.0</td>
+</tr>
+<tr class="light-orange">
+<td class="highlight-color"><b><a href = "sandeepvr.html">sandeepvr</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "sandeepvr.html">sandeepvr</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "sandeepvr.html">sandeepvr</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "sandeepvr.html">sandeepvr</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "sandeepvr.html">sandeepvr</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "sandeepvr.html">sandeepvr</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "sandeepvr.html">sandeepvr</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "sandeepvr.html">sandeepvr</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "sandeepvr.html">sandeepvr</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "sandeepvr.html">sandeepvr</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "sandeepvr.html">sandeepvr</a><b></td>
+<td>0.0</td>
+</tr>
+<tr class="light-orange">
+<td class="highlight-color"><b><a href = "ypavank.html">ypavank</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "ypavank.html">ypavank</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "ypavank.html">ypavank</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "ypavank.html">ypavank</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "ypavank.html">ypavank</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "ypavank.html">ypavank</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "ypavank.html">ypavank</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "ypavank.html">ypavank</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "ypavank.html">ypavank</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "ypavank.html">ypavank</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "ypavank.html">ypavank</a><b></td>
+<td>0.0</td>
+</tr>
+<tr class="light-orange">
+<td class="highlight-color"><b><a href = "karthik.html">karthik</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "karthik.html">karthik</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "karthik.html">karthik</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "karthik.html">karthik</a><b></td>
+<td>0</td>
+<td class="highlight-color"><b><a href = "karthik.html">karthik</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "karthik.html">karthik</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "karthik.html">karthik</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "karthik.html">karthik</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "karthik.html">karthik</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "karthik.html">karthik</a><b></td>
+<td>0.0</td>
+<td class="highlight-color"><b><a href = "karthik.html">karthik</a><b></td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html><img src="rest_stats_0.png"><img src="rest_stats_1.png"><img src="rest_stats_2.png"><br><br>
+        <div style="text-align:center;">
+            <h1>Total Remaining Matches: 9</h1>
+        </div>
+        <table>
+<thead>
+<tr>
+<th>Player_Name</th>
+<th>Aj</th>
+<th>Aman</th>
+<th>Hiren</th>
+<th>Karthik</th>
+<th>Karthikeya</th>
+<th>Lelouch</th>
+<th>Sandeepvr</th>
+<th>Tbd</th>
+<th>Ypavank</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Aj</th>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="highlight-color">To_be_Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="highlight-color">To_be_Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="light-orange">Played</td>
+</tr>
+<tr>
+<th>Aman</th>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="highlight-color">To_be_Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="highlight-color">To_be_Played</td>
+<td class="highlight-color">To_be_Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+</tr>
+<tr>
+<th>Hiren</th>
+<td class="highlight-color">To_be_Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="light-orange">Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="highlight-color">To_be_Played</td>
+</tr>
+<tr>
+<th>Karthik</th>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="highlight-color">To_be_Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="light-orange">Played</td>
+<td class="highlight-color">To_be_Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+</tr>
+<tr>
+<th>Karthikeya</th>
+<td class="highlight-color">To_be_Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="light-orange">Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="highlight-color">To_be_Played</td>
+</tr>
+<tr>
+<th>Lelouch</th>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="highlight-color">To_be_Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="light-orange">Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="highlight-color">To_be_Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+</tr>
+<tr>
+<th>Sandeepvr</th>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="highlight-color">To_be_Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="highlight-color">To_be_Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="highlight-color">To_be_Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+</tr>
+<tr>
+<th>Tbd</th>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="highlight-color">To_be_Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+</tr>
+<tr>
+<th>Ypavank</th>
+<td class="light-orange">Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="highlight-color">To_be_Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td class="highlight-color">To_be_Played</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+<td style="background-color: lightcoral;">Will_Not_Play</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html><br><br>
+        <div style="text-align:center;">
+            <h1>Knock Out Round</h1>
+        </div>
+        <br><br>
+        <div style="text-align:center;">
+            <h1>Drawn Scenarios in knock-outs</h1>
+        </div>
+        <br><br>
+        <div style="text-align:center;">
+            <h1>Match List Results</h1>
+        </div>
+        <table class="sortable">
+<thead>
+<tr>
+<th>match#</th>
+<th>player 1 name</th>
+<th>player 2 name</th>
+<th>winner</th>
+<th>player 1 name runs</th>
+<th>player 2 name runs</th>
+<th>player 1 name wickets</th>
+<th>player 2 name wickets</th>
+<th>player 1 name overs</th>
+<th>player 2 name overs</th>
+<th>player 1 name extra</th>
+<th>player 2 name extra</th>
+<th>Total Runs</th>
+<th>Total Overs</th>
+<th>Run Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>1</th>
+<td>hiren</td>
+<td>karthikeya</td>
+<td>karthikeya</td>
+<td>772</td>
+<td>802</td>
+<td>20</td>
+<td>15</td>
+<td>71</td>
+<td>80</td>
+<td>0</td>
+<td>0</td>
+<td>1574</td>
+<td>151</td>
+<td>10.42</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
+    
+                
+    </body>
+
+<footer>
+    <p>
+
+        These games are played between a bunch of passionate cricketers on virtual cricket, and these matches are played for pleasure. 
+
+    </p>
+</footer>
+
+    </html>
+        
